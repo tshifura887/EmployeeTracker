@@ -1,5 +1,4 @@
 p#notice = notice
-
 p
   strong First name:
   = @employee.first_name
@@ -7,7 +6,31 @@ p
 p
   strong Last name:
   = @employee.last_name
+p
+  strong Email:
+  = @employee.email
+
+h2 Projects List
+
+ul
+  - @employee.projects.each do |project|
+    li
+       = project.title 
+
+h4 Assign Projects to this employee
+
+= form_with model: @employee, local: true do |f|
+  =f.collection_check_boxes :project_ids, Project.all, :id, :title
+  =f.submit 'submit'
+
+br
 
 => link_to "Edit", edit_employee_path(@employee)
 '|
 =< link_to "Back", employees_path
+
+br
+br
+
+=link_to "Projects", projects_path
+

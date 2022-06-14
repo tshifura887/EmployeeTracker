@@ -5,6 +5,7 @@ table
     tr
       th First name
       th Last name
+      th Email
       th
       th
       th
@@ -14,10 +15,18 @@ table
       tr
         td = employee.first_name
         td = employee.last_name
+        td = employee.email
         td = link_to "Show", employee
         td = link_to "Edit", edit_employee_path(employee)
         td = link_to "Destroy", employee, data: {confirm: "Are you sure?"}, method: :delete
 
 br
 
+- @divisions.each do |division|
+  = link_to division.name, employees_path(div: division.id)
+
+br
+br
+
 = link_to "New Employee", new_employee_path
+= link_to "Divisions", divisions_path(@division)
