@@ -4,6 +4,16 @@ p
   strong Name:
   = @division.name
 
+h3 Employees in this Division
+
+ul
+  - @division.employees.each do |employee|
+    li
+      = link_to employee.first_name + " " +employee.last_name, employee_path
+
+
 => link_to "Edit", edit_division_path(@division)
 '|
 =< link_to "Back", divisions_path
+'|
+= link_to "Destroy", @division, data: {confirm: "Are you sure?"}, method: :delete

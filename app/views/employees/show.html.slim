@@ -28,6 +28,8 @@ br
 => link_to "Edit", edit_employee_path(@employee)
 '|
 =< link_to "Back", employees_path
+'|
+=> link_to "Destroy", @employee, data: {confirm: "Are you sure?"}, method: :delete
 
 br
 br

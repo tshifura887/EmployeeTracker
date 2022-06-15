@@ -1,22 +1,12 @@
 h1 Listing divisions
 
-table
-  thead
-    tr
-      th Name
-      th
-      th
-      th
 
-  tbody
-    - @divisions.each do |division|
-      tr
-        td = division.name
-        td = link_to "Show", division
-        td = link_to "Edit", edit_division_path(division)
-        td = link_to "Destroy", division, data: {confirm: "Are you sure?"}, method: :delete
-
+ul
+  - @divisions.each do |division|
+    li
+      = link_to division.name, division
 br
 
 = link_to "New Division", new_division_path
+'|
 = link_to "Employees", root_path

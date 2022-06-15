@@ -1,32 +1,20 @@
 h1 Listing employees
 
-table
-  thead
-    tr
-      th First name
-      th Last name
-      th Email
-      th
-      th
-      th
-
-  tbody
-    - @employees.each do |employee|
-      tr
-        td = employee.first_name
-        td = employee.last_name
-        td = employee.email
-        td = link_to "Show", employee
-        td = link_to "Edit", edit_employee_path(employee)
-        td = link_to "Destroy", employee, data: {confirm: "Are you sure?"}, method: :delete
+ul
+  - @employees.each do |employee|
+    li
+      = link_to employee.first_name+" "+employee.last_name, employee
+  
 
 br
 
 - @divisions.each do |division|
   = link_to division.name, employees_path(div: division.id)
+  '|
 
 br
 br
 
 = link_to "New Employee", new_employee_path
+'|
 = link_to "Divisions", divisions_path(@division)
